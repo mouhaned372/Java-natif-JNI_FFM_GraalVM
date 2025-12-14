@@ -1,0 +1,90 @@
+> ~/.sdkman/candidates/java/current/bin/native-image     --enable-preview     --enable-native-access=ALL-UNNAMED     -H:Name=sig-ffm     -H:+ReportExceptionStackTraces     --no-fallback     -cp . SigFFM
+Warning: The option '-H:Name=sig-ffm' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: Please re-evaluate whether any experimental option is required, and either remove or unlock it. The build output lists all active experimental options, including where they come from and possible alternatives. If you think an experimental option should be considered as stable, please file an issue.
+===============================================================================================================
+GraalVM Native Image: Generating 'sig-ffm' (executable)...
+===============================================================================================================
+[1/8] Initializing...                                                                           (4,3s @ 0,16GB)
+ Java version: 25.0.1+8-LTS, vendor version: Oracle GraalVM 25.0.1+8.1
+ Graal compiler: optimization level: 2, target machine: x86-64-v3, PGO: ML-inferred
+ C compiler: gcc (suse, x86_64, 15.2.1)
+ Garbage collector: Serial GC (max heap size: 80% of RAM)
+ 1 user-specific feature(s):
+ - com.oracle.svm.thirdparty.gson.GsonFeature
+---------------------------------------------------------------------------------------------------------------
+ 1 experimental option(s) unlocked:
+ - '-H:Name' (alternative API option(s): -o sig-ffm; origin(s): command line)
+---------------------------------------------------------------------------------------------------------------
+Build resources:
+ - 5,82GB of memory (75,6% of system memory, less than 8GB of memory available)
+ - 16 thread(s) (100,0% of 16 available processor(s), determined at start)
+[2/8] Performing analysis...  [*****]                                                          (13,4s @ 0,52GB)
+    3 771 types,   4 177 fields, and  19 532 methods found reachable
+    1 194 types,      49 fields, and     874 methods registered for reflection
+       58 types,      59 fields, and      52 methods registered for JNI access
+        0 downcalls and 0 upcalls registered for foreign access
+        4 native libraries: dl, pthread, rt, z
+[3/8] Building universe...                                                                      (1,3s @ 0,57GB)
+[4/8] Parsing methods...      [**]                                                              (3,6s @ 0,65GB)
+[5/8] Inlining methods...     [***]                                                             (0,8s @ 0,71GB)
+[6/8] Compiling methods...    [*****]                                                          (29,3s @ 1,43GB)
+[7/8] Laying out methods...   [**]                                                              (2,6s @ 1,54GB)
+[8/8] Creating image...       [**]                                                              (2,3s @ 1,64GB)
+   7,52MB (42,60%) for code area:    10 145 compilation units
+   8,65MB (49,00%) for image heap:  136 010 objects and 55 resources
+   1,48MB ( 8,40%) for other data
+  17,65MB in total image size, 16,65MB in total file size
+---------------------------------------------------------------------------------------------------------------
+Top 10 origins of code area:                           Top 10 object types in image heap:
+   5,33MB java.base                                       2,03MB byte[] for code metadata
+   1,63MB svm.jar (Native Image)                          1,41MB byte[] for java.lang.String
+ 115,93kB java.logging                                  822,26kB java.lang.String
+  61,22kB com.oracle.svm.svm_enterprise                 465,72kB heap alignment
+  48,94kB org.graalvm.nativeimage.configure             459,88kB byte[] for general heap data
+  39,47kB jdk.graal.compiler                            458,81kB java.lang.Class
+  35,92kB org.graalvm.nativeimage.base                  392,18kB com.oracle.svm.core.hub.DynamicHubCompanion
+  21,63kB jdk.internal.vm.ci                            360,99kB java.util.concurrent.ConcurrentHashMap$Node
+  20,02kB org.graalvm.collections                       268,13kB java.util.HashMap$Node
+  19,59kB jdk.proxy2                                    247,78kB java.lang.Object[]
+  36,53kB for 7 more packages                             1,74MB for 1117 more object types
+                        Use '--emit build-report' to create a report with more details.
+---------------------------------------------------------------------------------------------------------------
+Security report:
+ - Binary includes Java deserialization.
+ - CycloneDX SBOM with 5 component(s) is embedded in binary (417B). 1 type(s) could not be associated to a component.
+ - Advanced obfuscation not enabled; enable with '-H:AdvancedObfuscation=""' (experimental support).
+---------------------------------------------------------------------------------------------------------------
+Recommendations:
+ G1GC: Use the G1 GC ('--gc=G1') for improved latency and throughput.
+ PGO:  Use Profile-Guided Optimizations ('--pgo') for improved throughput.
+ FUTR: Use '--future-defaults=all' to prepare for future releases.
+ HEAP: Set max heap for improved and more predictable memory usage.
+ CPU:  Enable more CPU features with '-march=native' for improved performance.
+---------------------------------------------------------------------------------------------------------------
+                  3,9s (6,6% of total time) in 1352 GCs | Peak RSS: 2,37GB | CPU load: 11,71
+---------------------------------------------------------------------------------------------------------------
+Build artifacts:
+ /home/mouhaned/Téléchargements/TP7/sig-ffm (executable)
+===============================================================================================================
+Finished generating 'sig-ffm' in 58,5s.
+
+//////////
+
+mouhaned@localhost:~/Téléchargements/TP7> file sig-ffm
+sig-ffm: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=d9711e88f9f8e5cf8afddf2deb97987170297f6c, for GNU/Linux 4.3.0, stripped
+mouhaned@localhost:~/Téléchargements/TP7> time java --enable-preview --enable-native-access=ALL-UNNAMED -cp . SigFFM
+=== Test FFM ===
+avg = 3.0
+
+=== Test convolution ===
+Résultat convolution: [1.0]
+free(): invalid next size (fast)
+Abandon                    (core dumped)java --enable-preview --enable-native-access=ALL-UNNAMED -cp . SigFFM
+
+real    0m1,900s
+user    0m0,169s
+sys     0m0,454s
+ 
+
+
+
