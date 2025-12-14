@@ -7,19 +7,6 @@
 
 Projet académique démontrant trois approches d'interopérabilité Java-C dans des scénarios réels de calcul scientifique.
 
-## 📊 Table des Matières
-- [🎯 Aperçu](#-aperçu)
-- [🏗️ Architecture](#️-architecture)
-- [⚡ Technologies](#-technologies)
-- [📁 Structure](#-structure)
-- [🚀 Installation Rapide](#-installation-rapide)
-- [🔧 Configuration](#-configuration)
-- [🏃‍♂️ Utilisation](#️-utilisation)
-- [📈 Benchmarks](#-benchmarks)
-- [🎓 Cas d'Usage](#-cas-dusage)
-- [🤝 Contribution](#-contribution)
-- [📄 Licence](#-licence)
-
 ## 🎯 Aperçu
 
 Ce projet illustre l'évolution de l'interopérabilité Java-C :
